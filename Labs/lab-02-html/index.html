@@ -1,1 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEU Tech Event Information and Registration Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>SEU Tech Event</h1>
+        <p>Information and Registration Page</p>
+    </header>
+    
+<img src="images/event.jpg" alt="SEU tech event">
+    
+    <nav>
+        <a href="#about">About</a>
+        <a href="#topics">Topics</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#register">Register</a>
+    </nav>
+
+    <main>
+
+        <section id="about">
+            <h2>About the Event</h2>
+
+            <div>
+                <p>
+                    SEU Tech Event is a student-focused event about web development,
+                    programming and modern technology.
+                </p>
+
+                <p>
+                    The <span>main goal</span> of this event is to help students
+                    learn basic web technologies through practical activities.
+                </p>
+            </div>
+
+            <h3>Event Details</h3>
+
+            <p>
+                The event will be held at Southeast University. Students can join
+                different sessions and learn about basic web development.
+            </p>
+
+            <p>
+                <a href="https://www.seu.edu.bd" target="_blank">
+                    Visit Southeast University
+                </a>
+            </p>
+
+            <img src="images/event.jpg"
+                 alt="Students attending a technology event"
+                 width="600">
+        </section>
+
+
+        <section id="topics">
+            <h2>Topics Covered</h2>
+
+            <h3>Topics</h3>
+
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Web Development</li>
+                <li>Programming</li>
+            </ul>
+
+            <h3>Learning Steps</h3>
+
+            <ol>
+                <li>Learn HTML structure</li>
+                <li>Create webpage sections</li>
+                <li>Add lists and tables</li>
+                <li>Create a registration form</li>
+            </ol>
+
+            <h3>Workshop Plan</h3>
+
+            <ul>
+                <li>
+                    Web Development
+                    <ol>
+                        <li>HTML Basics</li>
+                        <li>CSS Basics</li>
+                    </ol>
+                </li>
+
+                <li>
+                    Other Topics
+                    <ul>
+                        <li>Programming</li>
+                        <li>Artificial Intelligence</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+
+        <section id="schedule">
+            <h2>Event Schedule</h2>
+
+            <table>
+                <tr>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th>Topic</th>
+                </tr>
+
+                <tr>
+                    <td>Sunday</td>
+                    <td>10:00 AM - 11:00 AM</td>
+                    <td>HTML Basics</td>
+                </tr>
+
+                <tr>
+                    <td>Sunday</td>
+                    <td>11:15 AM - 12:15 PM</td>
+                    <td>CSS Basics</td>
+                </tr>
+
+                <tr>
+                    <td>Tuesday</td>
+                    <td>10:00 AM - 11:00 AM</td>
+                    <td>Lists and Tables</td>
+                </tr>
+
+                <tr>
+                    <td>Tuesday</td>
+                    <td>11:15 AM - 12:15 PM</td>
+                    <td>Forms and Semantic HTML</td>
+                </tr>
+            </table>
+        </section>
+
+
+        <section id="register">
+            <h2>Registration Form</h2>
+
+            <form>
+
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name"
+                       placeholder="Enter your name" required>
+
+                <br><br>
+                <label for="studentid">Student ID:</label>
+                <input type="text" id="studentid" name="studentid"
+                       placeholder="Enter your student ID" required>
+
+                <br><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"
+                       placeholder="Enter your email" required>
+
+                <br><br>
+
+                <label for="date">Preferred Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <br><br>
+
+                <p>Preferred Shift:</p>
+
+                <input type="radio" id="morning" name="shift" value="morning">
+                <label for="morning">Morning</label>
+
+                <input type="radio" id="afternoon" name="shift" value="afternoon">
+                <label for="afternoon">Afternoon</label>
+
+                <br><br>
+
+                <p>Skills Already Known:</p>
+
+                <input type="checkbox" id="html" name="html">
+                <label for="html">HTML</label>
+
+                <input type="checkbox" id="css" name="css">
+                <label for="css">CSS</label>
+
+                <br><br>
+
+                <button type="submit">Submit Registration</button>
+
+            </form>
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>Contact: cse.lab@seu.edu.bd</p>
+        <p>Prepared for CSE 472 Web and Internet Programming Lab</p>
+    </footer>
+
+</body>
+
+</html>
