@@ -2,30 +2,101 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Student Workshop Registration System</title>
 
+    <!-- Lab 02 CSS -->
     <link rel="stylesheet" href="css/style.css">
+
 </head>
+
 
 <body>
 
+    <!-- 
+         HEADER
+     -->
+
     <header>
+
         <h1>Student Workshop Registration System</h1>
-        <p>CSE472 Web and Internet Programming Lab</p>
+
+        <p>
+            CSE472: Web and Internet Programming Lab
+        </p>
+
     </header>
+
 
     <main>
 
-        <!-- Workshop Registration -->
+
+        <!-- 
+             WORKSHOP INFORMATION
+         -->
+
         <section>
+
+            <h2>Workshop Information</h2>
+
+            <p>
+                Learn the basics of modern web development.
+            </p>
+
+
+            <!-- Lab 03: Registration Status -->
+
+            <button
+                type="button"
+                onclick="checkRegistration()"
+            >
+                Check Registration Status
+            </button>
+
+            <p id="registrationStatus">
+                Click the button to check the status.
+            </p>
+
+
+            <!-- Lab 03: Seat Availability -->
+
+            <button
+                type="button"
+                onclick="checkSeats()"
+            >
+                Check Seat Availability
+            </button>
+
+            <p id="seatMessage">
+                Seat information will appear here.
+            </p>
+
+        </section>
+
+
+
+        <!-- 
+             REGISTRATION FORM
+         -->
+
+        <section>
+
             <h2>Workshop Registration</h2>
+
 
             <form id="registrationForm">
 
-                <label for="studentName">Full Name</label>
+
+                <!-- Full Name -->
+
+                <label for="studentName">
+                    Full Name
+                </label>
+
                 <input
                     type="text"
                     id="studentName"
@@ -33,7 +104,26 @@
                     required
                 >
 
-                <label for="studentId">Student ID</label>
+
+                <!-- Lab 03: Personal Greeting -->
+
+                <button
+                    type="button"
+                    onclick="showGreeting()"
+                >
+                    Show Greeting
+                </button>
+
+                <p id="greetingMessage"></p>
+
+
+
+                <!-- Student ID -->
+
+                <label for="studentId">
+                    Student ID
+                </label>
+
                 <input
                     type="text"
                     id="studentId"
@@ -41,7 +131,14 @@
                     required
                 >
 
-                <label for="studentEmail">Email Address</label>
+
+
+                <!-- Email -->
+
+                <label for="studentEmail">
+                    Email Address
+                </label>
+
                 <input
                     type="email"
                     id="studentEmail"
@@ -49,24 +146,41 @@
                     required
                 >
 
-                <label for="workshop">Workshop</label>
+
+
+                <!-- Workshop -->
+
+                <label for="workshop">
+                    Workshop
+                </label>
 
                 <select
                     id="workshop"
                     name="workshop"
                     required
                 >
-                    <option value="">Select a workshop</option>
+
+                    <option value="">
+                        Select a workshop
+                    </option>
+
                     <option value="HTML Basics">
                         HTML Basics
                     </option>
+
                     <option value="CSS Basics">
                         CSS Basics
                     </option>
+
                     <option value="JavaScript Basics">
                         JavaScript Basics
                     </option>
+
                 </select>
+
+
+
+                <!-- Register Button -->
 
                 <button
                     type="button"
@@ -75,25 +189,36 @@
                     Register
                 </button>
 
-                <p id="formMessage"></p>
 
-            </form>
+                <p id="formMessage"></p>
+                </form>
+
         </section>
 
 
-        <!-- JSON Output -->
+
+        <!-- 
+             LAB 04: JSON OUTPUT
+        -->
+
         <section>
+
             <h2>JSON Output</h2>
 
-            <pre id="jsonOutput">
-No registration saved yet.
-            </pre>
+            <pre id="jsonOutput">No registration saved yet.</pre>
+
         </section>
 
 
-        <!-- Saved Registration -->
+
+        <!-- 
+             LAB 04: SAVED REGISTRATION
+         -->
+
         <section>
+
             <h2>Saved Registration</h2>
+
 
             <button
                 type="button"
@@ -102,6 +227,7 @@ No registration saved yet.
                 Show Saved Registration
             </button>
 
+
             <button
                 type="button"
                 onclick="clearRegistration()"
@@ -109,18 +235,25 @@ No registration saved yet.
                 Clear Saved Registration
             </button>
 
+
             <p id="savedMessage"></p>
+
         </section>
 
 
-        <!-- Lab 05: Fetch Local JSON -->
-        <section class="card">
+
+        <!-- 
+             LAB 05: FETCH LOCAL JSON
+        -->
+
+        <section>
 
             <h2>Workshop Details</h2>
 
             <p>
                 Click the button to load workshop information.
             </p>
+
 
             <button
                 type="button"
@@ -129,49 +262,70 @@ No registration saved yet.
                 Load Workshop Details
             </button>
 
+
             <p>
                 <strong>Title:</strong>
+
                 <span id="workshopTitle">
                     Not loaded
                 </span>
             </p>
 
+
             <p>
                 <strong>Date:</strong>
+
                 <span id="workshopDate">
                     Not loaded
                 </span>
             </p>
 
+
             <p>
                 <strong>Venue:</strong>
+
                 <span id="workshopVenue">
                     Not loaded
                 </span>
             </p>
 
+
             <p>
                 <strong>Seats:</strong>
+
                 <span id="workshopSeats">
                     Not loaded
                 </span>
             </p>
+
+
             <p>
                 <strong>Instructor:</strong>
+
                 <span id="workshopInstructor">
                     Not loaded
                 </span>
             </p>
+
 
             <p id="loadMessage"></p>
 
         </section>
 
 
-        <!-- Lab 05: Public API -->
-        <section class="card">
+
+        <!-- 
+             LAB 05: PUBLIC API
+        -->
+
+        <section>
 
             <h2>Public API Practice</h2>
+
+            <p>
+                Load a sample user from JSONPlaceholder.
+            </p>
+
 
             <button
                 type="button"
@@ -180,21 +334,32 @@ No registration saved yet.
                 Load Sample User
             </button>
 
+
             <p id="apiUser">
                 No API data loaded yet.
             </p>
 
         </section>
 
+
     </main>
 
 
+
+    <!-- 
+         FOOTER -->
+
     <footer>
+
         <p>
-            Prepared for CSE472 Web and Internet Programming Lab
+            CSE472 Web and Internet Programming Lab
         </p>
+
     </footer>
 
+
+
+    <!-- Lab 03/04/05 JavaScript -->
 
     <script src="js/script.js"></script>
 
