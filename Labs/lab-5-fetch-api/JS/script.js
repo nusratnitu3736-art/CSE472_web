@@ -1,115 +1,325 @@
+
+// LAB 03 - Simple JavaScript Interaction
+
+// Available seats
 let availableSeats = 12;
 
-// Display the current registration status.
+// Check Registration Status
+
 function checkRegistration() {
-    const message = document.getElementById("registrationStatus");
-    message.textContent = "Registration is currently open.";
+
+    let message =
+        document.getElementById("registrationStatus");
+
+    message.textContent =
+        "Registration is currently open.";
 }
 
-// Show whether seats are available.
+// Check Seat Availability
+
 function checkSeats() {
-    const message = document.getElementById("seatMessage");
+
+    let message =
+        document.getElementById("seatMessage");
 
     if (availableSeats > 0) {
-        message.textContent = "Seats are available. Remaining seats: " + availableSeats;
+
+        message.textContent =
+            "Seats are available. Remaining seats: " +
+            availableSeats;
+
     } else {
-        message.textContent = "Sorry, no seats are available.";
+
+        message.textContent =
+            "Sorry, no seats are available.";
     }
 }
 
-// Read the student's typed name and show a personalised greeting.
+
+// Personal Greeting
+
 function showGreeting() {
-    const name = document.getElementById("studentName").value.trim();
-    const output = document.getElementById("greetingMessage");
 
-    if (name === "") {
-        output.textContent = "Please enter your name first.";
-    } else {
-        output.textContent = "Welcome, " + name + "!";
-    }
+    let name =
+        document.getElementById("studentName").value;
+
+    let output =
+        document.getElementById("greetingMessage");
+
+    output.textContent =
+        "Welcome, " + name + "!";
 }
 
-// Lab 04 continuity: collect form data, convert it to JSON and save it in localStorage.
-function saveRegistration() {
-    const name = document.getElementById("studentName").value.trim();
-    const studentId = document.getElementById("studentId").value.trim();
-    const email = document.getElementById("studentEmail").value.trim();
-    const department = document.getElementById("department").value;
-    const output = document.getElementById("saveMessage");
 
-    if (name === ""  studentId === ""  email === "" || department === "") {
-        output.textContent = "Please complete all required registration fields.";
+// LAB 04 - Registration Form
+
+function submitRegistration() {
+
+    let name =
+        document.getElementById("studentName").value;
+
+    let studentId =
+        document.getElementById("studentId").value;
+
+    let email =
+        document.getElementById("studentEmail").value;
+
+    let workshop =
+        document.getElementById("workshop").value;
+
+    let message =
+        document.getElementById("formMessage");
+
+
+    // Check Full Name
+    if (name === "") {
+
+        message.textContent =
+            "Please enter your full name.";
+
         return;
     }
 
-    const registration = {
+
+    // Check Student ID
+    if (studentId === "") {
+
+        message.textContent =
+            "Please enter your Student ID.";
+
+        return;
+    }
+
+
+    // Check Email
+    if (email === "") {
+
+        message.textContent =
+            "Please enter your email address.";
+
+        return;
+    }
+
+
+    // Check Workshop
+    if (workshop === "") {
+
+        message.textContent =
+            "Please select a workshop.";
+
+        return;
+    }
+
+
+    // Create registration object
+    let registration = {
+
         name: name,
+
         studentId: studentId,
+
         email: email,
-        department: department
+
+        workshop: workshop
     };
 
-    localStorage.setItem("workshopRegistration", JSON.stringify(registration));
-    output.textContent = "Registration data saved in localStorage.";
+
+    // Convert object to JSON
+    let jsonData =
+        JSON.stringify(registration);
+
+
+    // Save registration
+    localStorage.setItem(
+        "registration",
+        jsonData
+    );
+
+
+    // Show JSON
+    document.getElementById(
+        "jsonOutput"
+    ).textContent = jsonData;
+
+
+    message.textContent =
+        "Registration saved successfully.";
 }
 
-// Read the saved registration back from localStorage.
-function loadSavedRegistration() {
-    const savedText = localStorage.getItem("workshopRegistration");
-    const output = document.getElementById("savedRegistration");
 
-    if (savedText === null) {
-        output.textContent = "No saved registration was found.";
+
+// Show Saved Registration
+
+function showSavedRegistration() {
+
+    let savedData =
+        localStorage.getItem("registration");
+
+    let output =
+        document.getElementById("savedMessage");
+
+
+    if (savedData === null) {
+
+        output.textContent =
+            "No saved registration was found.";
+
         return;
     }
 
-    const registration = JSON.parse(savedText);
-    output.textContent = registration.name + " (" + registration.studentId + ") - " + registration.department;
+
+    // Convert JSON to JavaScript object
+    let registration =
+        JSON.parse(savedData);
+
+
+    output.textContent =
+        registration.name +
+        " (ID: " +
+        registration.studentId +
+        ")" +
+        " registered for " +
+        registration.workshop +
+        ".";
 }
 
-// Lab 05: request the local JSON file, check status 200, read JSON and display it.
+
+
+// Clear Saved Registration
+
+
+function clearRegistration() {
+
+    localStorage.removeItem(
+        "registration"
+    );
+
+
+    document.getElementById(
+        "jsonOutput"
+    ).textContent =
+        "No registration saved yet.";
+   
+// LAB 05 - Fetch Local JSON
+
+
 async function loadWorkshop() {
-    document.getElementById("loadMessage").textContent =
-        "Please wait. Loading workshop information...";
 
-    const response = await fetch("data/workshop.json");
-    console.log("workshop.json status:", response.status);
+    // Show loading message
+    document.getElementById(
+        "loadMessage"
+    ).textContent = "Loading...";
 
+
+    // Send GET request for local JSON file
+    const response =
+        await fetch("data/workshop.json");
+
+
+    // Display status in browser console
+    console.log("HTTP Status:", response.status);
+
+
+    // Check successful response
     if (response.status === 200) {
-        const workshop = await response.json();
 
-        document.getElementById("workshopTitle").textContent = workshop.title;
-        document.getElementById("workshopDate").textContent = workshop.date;
-        document.getElementById("workshopVenue").textContent = workshop.venue;
-        document.getElementById("workshopSeats").textContent = workshop.seats;
-        document.getElementById("workshopInstructor").textContent = workshop.instructor;
-        document.getElementById("workshopDuration").textContent = workshop.duration;
-        document.getElementById("loadMessage").textContent =
-            "Workshop data loaded successfully (HTTP 200).";
+        // Convert JSON response into JavaScript object
+        const workshop =
+            await response.json();
+
+
+        // Display workshop title
+        document.getElementById(
+            "workshopTitle"
+        ).textContent =
+            workshop.title;
+
+
+        // Display workshop date
+        document.getElementById(
+            "workshopDate"
+        ).textContent =
+            workshop.date;
+
+
+        // Display workshop venue
+        document.getElementById(
+            "workshopVenue"
+        ).textContent =
+            workshop.venue;
+
+
+        // Display available seats
+        document.getElementById(
+            "workshopSeats"
+        ).textContent =
+            workshop.seats;
+
+
+        // Display instructor
+        document.getElementById(
+            "workshopInstructor"
+        ).textContent =
+            workshop.instructor;
+
+
+        // Success message
+        document.getElementById(
+            "loadMessage"
+        ).textContent =
+            "Workshop data loaded successfully.";
+
     } else {
-        document.getElementById("loadMessage").textContent =
-            "Could not load workshop data. HTTP status: " + response.status;
+
+        // Error message
+        document.getElementById(
+            "loadMessage"
+        ).textContent =
+            "Could not load workshop data.";
     }
 }
 
-// Lab 05 public API practice: request user 2 from JSONPlaceholder.
+
+
+// LAB 05 - Public API Practice
+
 async function loadSampleUser() {
-    document.getElementById("apiUser").textContent = "Loading public API data...";
 
-    const response = await fetch("https://jsonplaceholder.typicode.com/users/2");
-    console.log("JSONPlaceholder status:", response.status);
-  if (response.status === 200) {
-        const user = await response.json();
-        document.getElementById("apiUser").textContent =
-            user.name + " - " + user.email;
+    // Send GET request to public API
+    const response =
+        await fetch(
+            "https://jsonplaceholder.typicode.com/users/1"
+        );
+
+
+    // Check successful response
+    if (response.status === 200) {
+
+        // Convert API response to JavaScript object
+        const user =
+            await response.json();
+
+
+        // Display user name and email
+        document.getElementById(
+            "apiUser"
+        ).textContent =
+            user.name +
+            " - " +
+            user.email;
+
     } else {
-        document.getElementById("apiUser").textContent =
-            "Could not load API data. HTTP status: " + response.status;
+
+        document.getElementById(
+            "apiUser"
+        ).textContent =
+            "Could not load API data.";
     }
 }
 
-// Earlier-lab independent improvement retained in the final page.
-function showVenue() {
-    const message = document.getElementById("venueMessage");
-    message.textContent = "Venue details can also be loaded from data/workshop.json above.";
+
+    document.getElementById(
+        "savedMessage"
+    ).textContent =
+        "Saved registration cleared.";
 }
