@@ -1,11 +1,8 @@
-
-// LAB 03 - Simple JavaScript Interaction
-
 // Available seats
 let availableSeats = 12;
 
-// Check Registration Status
 
+// Check registration status
 function checkRegistration() {
 
     let message =
@@ -15,8 +12,8 @@ function checkRegistration() {
         "Registration is currently open.";
 }
 
-// Check Seat Availability
 
+// Check seat availability
 function checkSeats() {
 
     let message =
@@ -36,8 +33,7 @@ function checkSeats() {
 }
 
 
-// Personal Greeting
-
+// Show greeting
 function showGreeting() {
 
     let name =
@@ -51,8 +47,7 @@ function showGreeting() {
 }
 
 
-// LAB 04 - Registration Form
-
+// Submit registration
 function submitRegistration() {
 
     let name =
@@ -71,7 +66,6 @@ function submitRegistration() {
         document.getElementById("formMessage");
 
 
-    // Check Full Name
     if (name === "") {
 
         message.textContent =
@@ -81,7 +75,6 @@ function submitRegistration() {
     }
 
 
-    // Check Student ID
     if (studentId === "") {
 
         message.textContent =
@@ -91,7 +84,6 @@ function submitRegistration() {
     }
 
 
-    // Check Email
     if (email === "") {
 
         message.textContent =
@@ -101,7 +93,6 @@ function submitRegistration() {
     }
 
 
-    // Check Workshop
     if (workshop === "") {
 
         message.textContent =
@@ -111,32 +102,24 @@ function submitRegistration() {
     }
 
 
-    // Create registration object
     let registration = {
-
         name: name,
-
         studentId: studentId,
-
         email: email,
-
         workshop: workshop
     };
 
 
-    // Convert object to JSON
     let jsonData =
         JSON.stringify(registration);
 
 
-    // Save registration
     localStorage.setItem(
         "registration",
         jsonData
     );
 
 
-    // Show JSON
     document.getElementById(
         "jsonOutput"
     ).textContent = jsonData;
@@ -147,9 +130,7 @@ function submitRegistration() {
 }
 
 
-
-// Show Saved Registration
-
+// Show saved registration
 function showSavedRegistration() {
 
     let savedData =
@@ -168,7 +149,6 @@ function showSavedRegistration() {
     }
 
 
-    // Convert JSON to JavaScript object
     let registration =
         JSON.parse(savedData);
 
@@ -184,10 +164,7 @@ function showSavedRegistration() {
 }
 
 
-
-// Clear Saved Registration
-
-
+// Clear saved registration
 function clearRegistration() {
 
     localStorage.removeItem(
@@ -199,108 +176,101 @@ function clearRegistration() {
         "jsonOutput"
     ).textContent =
         "No registration saved yet.";
-   
-// LAB 05 - Fetch Local JSON
 
 
+    document.getElementById(
+        "savedMessage"
+    ).textContent =
+        "Saved registration cleared.";
+}
+
+
+// Load workshop data from local JSON
 async function loadWorkshop() {
 
-    // Show loading message
-    document.getElementById(
-        "loadMessage"
-    ).textContent = "Loading...";
+    let message =
+        document.getElementById("loadMessage");
+
+    message.textContent =
+        "Loading...";
 
 
-    // Send GET request for local JSON file
     const response =
         await fetch("data/workshop.json");
 
 
-    // Display status in browser console
-    console.log("HTTP Status:", response.status);
+    console.log(
+        "HTTP Status:",
+        response.status
+    );
 
 
-    // Check successful response
     if (response.status === 200) {
 
-        // Convert JSON response into JavaScript object
         const workshop =
             await response.json();
 
 
-        // Display workshop title
         document.getElementById(
             "workshopTitle"
         ).textContent =
             workshop.title;
 
 
-        // Display workshop date
         document.getElementById(
             "workshopDate"
         ).textContent =
             workshop.date;
 
 
-        // Display workshop venue
         document.getElementById(
             "workshopVenue"
         ).textContent =
             workshop.venue;
 
 
-        // Display available seats
         document.getElementById(
             "workshopSeats"
         ).textContent =
             workshop.seats;
-
-
-        // Display instructor
         document.getElementById(
             "workshopInstructor"
         ).textContent =
             workshop.instructor;
 
 
-        // Success message
-        document.getElementById(
-            "loadMessage"
-        ).textContent =
+        message.textContent =
             "Workshop data loaded successfully.";
 
     } else {
 
-        // Error message
-        document.getElementById(
-            "loadMessage"
-        ).textContent =
+        message.textContent =
             "Could not load workshop data.";
     }
 }
 
 
-
-// LAB 05 - Public API Practice
-
+// Load data from public API
 async function loadSampleUser() {
 
-    // Send GET request to public API
     const response =
         await fetch(
             "https://jsonplaceholder.typicode.com/users/1"
         );
 
 
-    // Check successful response
+    console.log(
+        "Public API Status:",
+        response.status
+    );
+
+
     if (response.status === 200) {
 
-        // Convert API response to JavaScript object
         const user =
             await response.json();
 
 
-        // Display user name and email
         document.getElementById(
             "apiUser"
         ).textContent =
@@ -315,11 +285,4 @@ async function loadSampleUser() {
         ).textContent =
             "Could not load API data.";
     }
-}
-
-
-    document.getElementById(
-        "savedMessage"
-    ).textContent =
-        "Saved registration cleared.";
 }
