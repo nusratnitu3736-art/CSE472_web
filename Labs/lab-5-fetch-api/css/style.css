@@ -1,0 +1,83 @@
+/* Page style */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    color: #222;
+    background-color: #f7f7f7;
+}
+
+/* Header */
+header {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Main content */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Sections */
+section {
+    margin-bottom: 24px;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* Form labels */
+label {
+    display: block;
+    margin-top: 12px;
+}
+
+/* Input and select */
+input,
+select {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    padding: 10px;
+    margin: 6px 0 12px;
+    box-sizing: border-box;
+}
+
+/* Buttons */
+button {
+    padding: 10px 16px;
+    margin: 8px 4px 8px 0;
+    cursor: pointer;
+}
+
+/* JSON output */
+pre {
+    padding: 12px;
+    background-color: #f3f5f7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* Messages */
+#formMessage,
+#savedMessage,
+#registrationStatus,
+#seatMessage,
+#greetingMessage,
+#loadMessage,
+#apiUser {
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
