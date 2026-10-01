@@ -1,1 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Workshop Registration System</title>
 
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Student Workshop Registration System</h1>
+        <p>Register for upcoming student workshops.</p>
+    </header>
+
+    <main>
+
+        <section>
+            <h2>Workshop Information</h2>
+
+            <p><strong>Workshop:</strong> JavaScript Fundamentals</p>
+            <p><strong>Date:</strong> 20 October 2026</p>
+            <p><strong>Time:</strong> 10:00 AM - 1:00 PM</p>
+            <p><strong>Venue:</strong> Computer Lab</p>
+        </section>
+
+        <section>
+            <h2>Registration Status</h2>
+
+            <button type="button" onclick="checkRegistration()">
+                Check Registration Status
+            </button>
+
+            <p id="registrationStatus">
+                Click the button to check the status.
+            </p>
+        </section>
+
+        <section>
+            <h2>Seat Availability</h2>
+
+            <button type="button" onclick="checkSeats()">
+                Check Seat Availability
+            </button>
+
+            <p id="seatMessage">
+                Seat information will appear here.
+            </p>
+        </section>
+
+        <section>
+            <h2>Workshop Reminder</h2>
+
+            <button type="button" onclick="showReminder()">
+                Show Workshop Reminder
+            </button>
+
+            <p id="reminderMessage">
+                Reminder information will appear here.
+            </p>
+        </section>
+
+        <section>
+            <h2>Registration Form</h2>
+
+            <form>
+
+                <label for="studentName">Full Name</label>
+                <input
+                    type="text"
+                    id="studentName"
+                    name="studentName"
+                    required
+                >
+
+                <button type="button" onclick="showGreeting()">
+                    Show Greeting
+                </button>
+
+                <p id="greetingMessage"></p>
+
+
+                <label for="studentId">Student ID</label>
+                <input
+                    type="text"
+                    id="studentId"
+                    name="studentId"
+                    required
+                >
+
+
+                <label for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                >
+
+
+                <label for="department">Department</label>
+                <select id="department" name="department">
+                    <option value="CSE">CSE</option>
+                    <option value="EEE">EEE</option>
+                    <option value="BBA">BBA</option>
+                    <option value="CE">CE</option>
+                </select>
+
+
+                <label for="workshop">Workshop</label>
+                <select id="workshop" name="workshop">
+                    <option value="JavaScript Fundamentals">
+                        JavaScript Fundamentals
+                    </option>
+                    <option value="HTML and CSS Basics">
+                        HTML and CSS Basics
+                    </option>
+                    <option value="Web Design">
+                        Web Design
+                    </option>
+                </select>
+
+
+                <label for="expectations">
+                    What do you expect to learn?
+                </label>
+
+                <textarea
+                    id="expectations"
+                    name="expectations"
+                    rows="5"
+                ></textarea>
+
+
+                <button type="button" onclick="submitRegistration()">
+                    Submit Registration
+                </button>
+
+                <p id="submitMessage"></p>
+
+            </form>
+        </section>
+
+    </main>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
